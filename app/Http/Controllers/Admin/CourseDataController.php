@@ -20,19 +20,17 @@ class CourseDataController extends Controller
     public function update(Request $request, CourseData $courseData)
     {
         $validated = $request->validate([
-            'title' => 'string',
-            'description' => 'string',
-            'enrollment_open' => 'boolean',
-            'enrollment_url' => 'string',
-            'enrollment_text' => 'string',
-            'organization_name' => 'string',
-            'organization_url' => 'string',
+            'title' => 'required|string|max:255',  
+            'description' => 'nullable|string',   
+            'enrollment_url' => 'nullable|string|url',  
+            'enrollment_text' => 'nullable|string',
+            'organization_name' => 'nullable|string|max:255',
+            'organization_url' => 'nullable|string|url', 
         ]);
-        dd($validated);
-        $validated['enrollment_open'] = $request->has('enrollment_open');
 
         $courseData->update($validated);
-        return redirect()->route('admin.course-data.index');
+
+        return redirect()->route('admin.course-datas.index')->with('success', 'Course data updated successfully.');
     }
 
     private function getModelNames()

@@ -27,21 +27,14 @@ class NavLinkController extends Controller
             'route' => 'required|string|max:255',
             'text' => 'required|string|max:255'
         ]);
-
+        
         NavLink::create($validated);
         return redirect()->route('admin.navlinks.index');
     }
 
-    public function edit(NavLink $navlink)
-    {
-        return view('admin.navlinks.edit', [
-            'navlink' => $navlink,
-            'models' => $this->getModelNames()
-        ]);
-    }
-
     public function update(Request $request, NavLink $navlink)
     {
+        
         $validated = $request->validate([
             'route' => 'required|string|max:255',
             'text' => 'required|string|max:255'

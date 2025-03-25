@@ -110,8 +110,6 @@
                 <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
                     {{ $courseData->description }}
                 </p>
-
-                @if($courseData->enrollment_open)
                 <div class="flex flex-col sm:flex-row justify-center gap-4">
                     <a href="{{ $courseData->enrollment_url }}" target="_blank"
                         class="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-8 rounded-lg transition-all duration-300">
@@ -121,7 +119,6 @@
                         {{ $courseData->enrollment_text }}
                     </a>
                 </div>
-                @endif
             </div>
 
             <!-- Company Logo Section -->

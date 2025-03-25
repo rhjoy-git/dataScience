@@ -23,7 +23,7 @@ class EnrollmentPointController extends Controller
         ]);
 
         EnrollmentPoint::create($validated);
-        return redirect()->route('admin.enrollmentpoints.index');
+        return redirect()->route('admin.enrollment-point.index');
     }
 
     public function update(Request $request, EnrollmentPoint $enrollmentPoint)
@@ -33,21 +33,32 @@ class EnrollmentPointController extends Controller
         ]);
 
         $enrollmentPoint->update($validated);
-        return redirect()->route('admin.enrollmentpoints.index');
+        return redirect()->route('admin.enrollment-point.index');
     }
 
     public function destroy(EnrollmentPoint $enrollmentPoint)
     {
         $enrollmentPoint->delete();
-        return redirect()->route('admin.enrollmentpoints.index');
+        return redirect()->route('admin.enrollment-point.index');
     }
 
     private function getModelNames()
     {
         return [
-            'NavLink', 'Curriculum', 'CourseDetail', 'Tool', 'CourseData',
-            'CourseSummary', 'CourseOffering', 'EnrollmentPoint', 'Instructor',
-            'Requirement', 'Faq', 'Testimonial', 'Graduate', 'FooterData'
+            'NavLinks',
+            'Course-Datas',
+            'Course-Summary',
+            'Curriculum',
+            'Course-Details',
+            'Tools',
+            'Course-Offering',
+            'Enrollment-Point',
+            'Instructor',
+            'Requirement',
+            'Faqs',
+            'Testimonials',
+            'Graduates',
+            'FooterDatas'
         ];
     }
 }

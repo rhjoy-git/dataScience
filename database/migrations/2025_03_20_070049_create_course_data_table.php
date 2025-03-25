@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('description')->nullable();
-            $table->boolean('enrollment_open')->nullable();
             $table->string('enrollment_url')->nullable();
             $table->string('enrollment_text')->nullable();
             $table->string('organization_name')->nullable();

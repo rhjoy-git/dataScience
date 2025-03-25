@@ -22,7 +22,7 @@
                         class="text-blue-500 hover:text-blue-600">
                     Edit
                 </button>
-                <form action="{{ route('admin.courseofferings.destroy', $offering) }}" method="POST">
+                <form action="{{ route('admin.course-offering.destroy', $offering) }}" method="POST">
                     @csrf @method('DELETE')
                     <button type="submit" class="text-red-500 hover:text-red-600" 
                             onclick="return confirm('Are you sure?')">
@@ -105,11 +105,11 @@
                 
                 if (action === 'create') {
                     this.modalTitle = 'Create Course Offering';
-                    this.actionUrl = '{{ route('admin.courseofferings.store') }}';
+                    this.actionUrl = '{{ route('admin.course-offering.store') }}';
                     this.method = 'POST';
                 } else if (action === 'edit' && offering) {
                     this.modalTitle = 'Edit Course Offering';
-                    this.actionUrl = `{{ route('admin.courseofferings.update', '') }}/${offering.id}`;
+                    this.actionUrl = `{{ route('admin.course-offering.update', '') }}/${offering.id}`;
                     this.method = 'PUT';
                     this.formData = {
                         ...offering,

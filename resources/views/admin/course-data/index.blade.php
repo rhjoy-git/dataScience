@@ -21,7 +21,6 @@
                 <tr class="border-t">
                     <td class="px-6 py-4">{{ $data->title }}</td>
                     <td class="px-6 py-4">{{ Str::limit($data->description, 50) }}</td>
-                    <td class="px-6 py-4">{{ $data->enrollment_open ? 'Yes' : 'No' }}</td>
                     <td class="px-6 py-4">
                         <button @click="openModal('edit', {{ Js::from($data->toArray()) }})"
                             class="text-blue-500 mr-2 hover:text-blue-600">
@@ -64,13 +63,6 @@
                                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" >
                         </div>
 
-                        <div>
-                            <label class="flex items-center space-x-2">
-                                <input type="checkbox" name="enrollment_open" x-model="formData.enrollment_open"
-                                    class="rounded border-gray-300 text-blue-600">
-                                <span class="text-sm text-gray-700">Enrollment Open</span>
-                            </label>
-                        </div>
                     </div>
 
                     <!-- Right Column -->
@@ -118,7 +110,6 @@
             formData: {
                 title: '',
                 description: '',
-                enrollment_open: false,
                 enrollment_url: '',
                 enrollment_text: '',
                 organization_name: '',
@@ -134,7 +125,6 @@
                     this.method = 'PUT';
                     this.formData = {
                         ...courseData,
-                        enrollment_open: Boolean(courseData.enrollment_open),
                         organization_logo: courseData.organization_logo ? 
                             `{{ asset('storage/${courseData.organization_logo}') }}` : null
                     };
@@ -149,7 +139,6 @@
                 this.formData = {
                     title: '',
                     description: '',
-                    enrollment_open: false,
                     enrollment_url: '',
                     enrollment_text: '',
                     organization_name: '',

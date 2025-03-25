@@ -21,7 +21,7 @@
                         class="text-blue-500 hover:text-blue-600">
                     Edit
                 </button>
-                <form action="{{ route('admin.requirements.destroy', $requirement) }}" method="POST">
+                <form action="{{ route('admin.requirement.destroy', $requirement) }}" method="POST">
                     @csrf @method('DELETE')
                     <button type="submit" class="text-red-500 hover:text-red-600" 
                             onclick="return confirm('Are you sure?')">
@@ -90,11 +90,11 @@
                 
                 if (action === 'create') {
                     this.modalTitle = 'Create Requirement';
-                    this.actionUrl = '{{ route('admin.requirements.store') }}';
+                    this.actionUrl = '{{ route('admin.requirement.store') }}';
                     this.method = 'POST';
                 } else if (action === 'edit' && requirement) {
                     this.modalTitle = 'Edit Requirement';
-                    this.actionUrl = `{{ route('admin.requirements.update', '') }}/${requirement.id}`;
+                    this.actionUrl = `{{ route('admin.requirement.update', '') }}/${requirement.id}`;
                     this.method = 'PUT';
                     this.formData = {
                         ...requirement,

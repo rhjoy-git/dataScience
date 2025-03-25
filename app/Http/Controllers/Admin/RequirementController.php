@@ -24,10 +24,10 @@ class RequirementController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048'
         ]);
 
-        $validated['image'] = $request->file('image')->store('requirements', 'public');
+        $validated['image'] = $request->file('image')->store('requirement', 'public');
 
         Requirement::create($validated);
-        return redirect()->route('admin.requirements.index');
+        return redirect()->route('admin.requirement.index');
     }
 
     public function update(Request $request, Requirement $requirement)
@@ -39,26 +39,37 @@ class RequirementController extends Controller
 
         if ($request->hasFile('image')) {
             Storage::delete($requirement->image);
-            $validated['image'] = $request->file('image')->store('requirements', 'public');
+            $validated['image'] = $request->file('image')->store('requirement', 'public');
         }
 
         $requirement->update($validated);
-        return redirect()->route('admin.requirements.index');
+        return redirect()->route('admin.requirement.index');
     }
 
     public function destroy(Requirement $requirement)
     {
         Storage::delete($requirement->image);
         $requirement->delete();
-        return redirect()->route('admin.requirements.index');
+        return redirect()->route('admin.requirement.index');
     }
 
     private function getModelNames()
     {
         return [
-            'NavLink', 'Curriculum', 'CourseDetail', 'Tool', 'CourseData',
-            'CourseSummary', 'CourseOffering', 'EnrollmentPoint', 'Instructor',
-            'Requirement', 'Faq', 'Testimonial', 'Graduate', 'FooterData'
+            'NavLinks',
+            'Course-Datas',
+            'Course-Summary',
+            'Curriculum',
+            'Course-Details',
+            'Tools',
+            'Course-Offering',
+            'Enrollment-Point',
+            'Instructor',
+            'Requirement',
+            'Faqs',
+            'Testimonials',
+            'Graduates',
+            'FooterDatas'
         ];
     }
 }

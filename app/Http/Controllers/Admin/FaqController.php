@@ -47,9 +47,20 @@ class FaqController extends Controller
     private function getModelNames()
     {
         return [
-            'NavLink', 'Curriculum', 'CourseDetail', 'Tool', 'CourseData',
-            'CourseSummary', 'CourseOffering', 'EnrollmentPoint', 'Instructor',
-            'Requirement', 'Faq', 'Testimonial', 'Graduate', 'FooterData'
+            'NavLinks',
+            'Course-Datas',
+            'Course-Summary',
+            'Curriculum',
+            'Course-Details',
+            'Tools',
+            'Course-Offering',
+            'Enrollment-Point',
+            'Instructor',
+            'Requirement',
+            'Faqs',
+            'Testimonials',
+            'Graduates',
+            'FooterDatas'
         ];
     }
 }

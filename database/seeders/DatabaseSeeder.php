@@ -33,7 +33,7 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('password'),
             'status' => 1
         ]);
-        // OK DB
+        // NavLinks OK DB
         $navLinks = [
             ['route' => 'home', 'text' => 'Home'],
             ['route' => 'courses', 'text' => 'Courses'],
@@ -47,11 +47,10 @@ class DatabaseSeeder extends Seeder
         ];
         NavLink::insert($navLinks);
 
-        // 5. Course Data NOt Working
+        // 5. Course Data OK DB
         $courseData = [
             'title' => 'Data Science and Machine Learning Zero to Mastery (25th Batch)',
             'description' => 'দেশের সবচেয়ে বড় ডাটা সায়েন্স ও মেশিন লার্নিং কোর্সটি এখন Skill Jobs-এ, যা একদম বিগিনারদের জন্য সাজানো হয়েছে। এখানে আপনি জয়েন করতে পারবেন কোনো কোডিং নলেজ ছাড়াই!',
-            'enrollment_open' => true,
             'enrollment_url' => 'https://forms.gle/YEYxLYr1fdtznTrs9',
             'enrollment_text' => '২৪তম ব্যাচ এ Enroll করুন',
             'organization_name' => 'A Concern Of Daffodil Family',
@@ -60,7 +59,7 @@ class DatabaseSeeder extends Seeder
         ];
         CourseData::create($courseData);
 
-        // 6. Course Summary
+        // 6. Course Summary NOT Working
         $courseSummary = [
             'section_title' => 'Course Summary',
             'stats' => [
@@ -99,7 +98,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
 
-        // 2. Curriculum
+        // 2. Curriculum NOT Working
         $curriculumData = [
             [
                 'section_title' => 'কারিকুলাম',
@@ -254,7 +253,7 @@ class DatabaseSeeder extends Seeder
             Curriculum::create($item);
         }
 
-        // 3. Course Details
+        // 3. Course Details Not Wokitng
         $coursesDetails = [
             [
                 'section_title' => 'কোর্সের বর্ণনা',
@@ -300,7 +299,7 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        // 4. Tools
+        // 4. Tools Image Not Working
         $tools = [
             ['name' => 'Microsoft Power BI', 'image' => 'images/powerbi.png'],
             // ['name' => 'Python', 'image' => 'images/111.png'],
@@ -316,7 +315,7 @@ class DatabaseSeeder extends Seeder
         ];
         Tool::insert($tools);
 
-        // Enroll
+        // Enroll pending
         $enrolls = [
             ['section_title' => 'এনালাইজিং ডাটা উইথ মাইক্রোসফট পাওয়ার বিআই (২৪ ব্যাচ)', 'title' => '২৪তম ব্যাচ এ Enroll করুন', 'enroll_url' => 'https://forms.gle/YEYxLYr1fdtznTrs9'],
         ];
@@ -376,7 +375,7 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        // 8. Enrollment Points
+        // 8. Enrollment Points OK DATABASE
         $enrollmentPoints = [
             'section_title' => 'কোর্সটি আপনারই জন্য',
             'points' => [
@@ -392,7 +391,7 @@ class DatabaseSeeder extends Seeder
             EnrollmentPoint::create(['point' => $point]);
         }
 
-        // 9. Instructor
+        // 9. Instructor NOT DONE
         $instructor = [
             'name' => 'Md. Mahabub Alam',
             'designation' => 'বিজনেস ডেটা এনালিস্ট',
@@ -429,7 +428,7 @@ class DatabaseSeeder extends Seeder
 
         Instructor::create($instructor);
 
-        // 10. Requirements
+        // 10. Requirements OK DB
         $requirements = [
             ['image' => 'images/ল্যাপটপ_ডেস্কটপ.png', 'title' => 'একটি ল্যাপটপ বা পিসি'],
             ['image' => 'images/ভালো ইন্টারনেট কানেকশন.png', 'title' => 'ভালো ইন্টারনেট কানেকশন'],
@@ -440,7 +439,7 @@ class DatabaseSeeder extends Seeder
         ];
         Requirement::insert($requirements);
 
-        // 11. FAQs
+        // 11. FAQs OK DB
         $faqs = [
             ['question' => 'প্রশ্ন ১: Power BI কী?', 'answer' => 'Power BI একটি বিজনেস অ্যানালিটিক্স টুল, যা আপনাকে ডাটা ভিজ্যুয়ালাইজেশন তৈরি করতে এবং বিভিন্ন উৎস থেকে ডাটা সংগ্রহ ও বিশ্লেষণ করে অর্থবহ ইনসাইট বের করতে সাহায্য করে।'],
             ['question' => 'প্রশ্ন ২: এই কোর্সে কী কী শিখানো হবে?', 'answer' => 'Power BI এর বেসিক থেকে অ্যাডভান্সড লেভেল
@@ -524,14 +523,14 @@ class DatabaseSeeder extends Seeder
         ];
         Testimonial::insert($testimonials);
 
-        // 13. Graduates
+        // 13. Graduates NOt Done
         $graduates = [];
         for ($i = 1; $i <= 22; $i++) {
             $graduates[] = ['image' => "images/{$i}.jpg"];
         }
         Graduate::insert($graduates);
 
-        // 14. Footer Data
+        // 14. Footer Data Not DOne
         $footerData = [
             'courses' => [
                 ['name' => 'Full Stack Web Development', 'url' => '#'],

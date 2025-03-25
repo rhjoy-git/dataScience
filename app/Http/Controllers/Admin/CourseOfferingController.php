@@ -26,10 +26,10 @@ class CourseOfferingController extends Controller
             'description' => 'required|string'
         ]);
 
-        $validated['icon'] = $request->file('icon')->store('course-offerings', 'public');
+        $validated['icon'] = $request->file('icon')->store('course-offering', 'public');
 
         CourseOffering::create($validated);
-        return redirect()->route('admin.course-offerings.index');
+        return redirect()->route('admin.course-offering.index');
     }
 
     public function update(Request $request, CourseOffering $courseOffering)
@@ -43,26 +43,37 @@ class CourseOfferingController extends Controller
 
         if ($request->hasFile('icon')) {
             Storage::delete($courseOffering->icon);
-            $validated['icon'] = $request->file('icon')->store('course-offerings', 'public');
+            $validated['icon'] = $request->file('icon')->store('course-offering', 'public');
         }
 
         $courseOffering->update($validated);
-        return redirect()->route('admin.course-offerings.index');
+        return redirect()->route('admin.course-offering.index');
     }
 
     public function destroy(CourseOffering $courseOffering)
     {
         Storage::delete($courseOffering->icon);
         $courseOffering->delete();
-        return redirect()->route('admin.course-offerings.index');
+        return redirect()->route('admin.course-offering.index');
     }
 
     private function getModelNames()
     {
         return [
-            'NavLink', 'Curriculum', 'CourseDetail', 'Tool', 'CourseData',
-            'CourseSummary', 'CourseOffering', 'EnrollmentPoint', 'Instructor',
-            'Requirement', 'Faq', 'Testimonial', 'Graduate', 'FooterData'
+            'NavLinks',
+            'Course-Datas',
+            'Course-Summary',
+            'Curriculum',
+            'Course-Details',
+            'Tools',
+            'Course-Offering',
+            'Enrollment-Point',
+            'Instructor',
+            'Requirement',
+            'Faqs',
+            'Testimonials',
+            'Graduates',
+            'FooterDatas'
         ];
     }
 }

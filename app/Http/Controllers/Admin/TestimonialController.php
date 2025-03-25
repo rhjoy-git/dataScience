@@ -21,7 +21,8 @@ class TestimonialController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'text' => 'required|string',
+            'title' => 'required|string|max:255', // Add title
+            'description' => 'required|string',   // Change text to description
             'image' => 'required|image|mimes:jpeg,png,jpg|max:2048'
         ]);
 
@@ -33,14 +34,16 @@ class TestimonialController extends Controller
 
     public function update(Request $request, Testimonial $testimonial)
     {
+
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'text' => 'required|string',
+            'name' => 'required|string',
+            'title' => 'required|string',
+            'description' => 'required|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048'
         ]);
-
+        // Here is the problem 
         if ($request->hasFile('image')) {
-            Storage::delete($testimonial->image);
+            Storage::disk('public')->delete($testimonial->image);
             $validated['image'] = $request->file('image')->store('testimonials', 'public');
         }
 
@@ -58,9 +61,20 @@ class TestimonialController extends Controller
     private function getModelNames()
     {
         return [
-            'NavLink', 'Curriculum', 'CourseDetail', 'Tool', 'CourseData',
-            'CourseSummary', 'CourseOffering', 'EnrollmentPoint', 'Instructor',
-            'Requirement', 'Faq', 'Testimonial', 'Graduate', 'FooterData'
+            'NavLinks',
+            'Course-Datas',
+            'Course-Summary',
+            'Curriculum',
+            'Course-Details',
+            'Tools',
+            'Course-Offering',
+            'Enrollment-Point',
+            'Instructor',
+            'Requirement',
+            'Faqs',
+            'Testimonials',
+            'Graduates',
+            'FooterDatas'
         ];
     }
 }
