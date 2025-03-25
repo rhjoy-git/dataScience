@@ -19,7 +19,7 @@ class CurriculumController extends Controller
 
     public function create()
     {
-        return view('admin.curriculums.create', ['models' => $this->getModelNames()]);
+        return view('admin.curriculum.create', ['models' => $this->getModelNames()]);
     }
 
 
@@ -47,7 +47,7 @@ class CurriculumController extends Controller
 
         Curriculum::create($validated);
 
-        return redirect()->route('admin.Curriculum.index');
+        return redirect()->route('admin.curriculum.index');
     }
 
 
@@ -74,17 +74,17 @@ class CurriculumController extends Controller
         $validated['lessons'] = json_encode($validated['lessons']);
 
         $curriculum->update($validated);
-        return redirect()->route('admin.Curriculum.index');
+        return redirect()->route('admin.curriculum.index');
     }
 
     public function show(Curriculum $curriculum)
     {
-        return view('admin.Curriculum.show', compact('curriculum'));
+        return view('admin.curriculum.show', compact('curriculum'));
     }
 
     public function edit(Curriculum $curriculum)
     {
-        return view('admin.Curriculum.edit', compact('curriculum'));
+        return view('admin.curriculum.edit', compact('curriculum'));
     }
 
 
@@ -97,20 +97,20 @@ class CurriculumController extends Controller
     private function getModelNames()
     {
         return [
-            'NavLink',
+            'NavLinks',
+            'Course-Datas',
+            'Course-Summary',
             'Curriculum',
-            'CourseDetail',
-            'Tool',
-            'CourseData',
-            'CourseSummary',
-            'CourseOffering',
-            'EnrollmentPoint',
+            'Course-Details',
+            'Tools',
+            'Course-Offering',
+            'Enrollment-Point',
             'Instructor',
             'Requirement',
-            'Faq',
-            'Testimonial',
-            'Graduate',
-            'FooterData'
+            'Faqs',
+            'Testimonials',
+            'Graduates',
+            'FooterDatas'
         ];
     }
 }

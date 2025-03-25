@@ -12,6 +12,7 @@ use App\Models\{
     CourseData,
     CourseSummary,
     CourseOffering,
+    Enroll,
     EnrollmentPoint,
     Instructor,
     Requirement,
@@ -32,15 +33,16 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('password'),
             'status' => 1
         ]);
-
+        // OK DB
         $navLinks = [
             ['route' => 'home', 'text' => 'Home'],
             ['route' => 'courses', 'text' => 'Courses'],
-            ['route' => 'online-courses', 'text' => 'Online Courses'],
+            ['route' => 'online-course', 'text' => 'Online Courses'],
             ['route' => 'workshop', 'text' => 'Workshop'],
             ['route' => 'free-class', 'text' => 'Free Class'],
             ['route' => 'events', 'text' => 'Events'],
-            ['route' => 'contact', 'text' => 'Contact'],
+            ['route' => 'contact-us', 'text' => 'Contact'],
+            ['route' => 'short-course', 'text' => 'Short Course'],
             ['route' => 'back-to-skills', 'text' => 'Back To Skills'],
         ];
         NavLink::insert($navLinks);
@@ -75,7 +77,7 @@ class DatabaseSeeder extends Seeder
                 [
                     'icon' => 'calendar',
                     'title' => 'কোর্সটি শুরু:',
-                    'detail' => '২৫ ফেব্রুয়ারী, ২০২৫ ইং'
+                    'detail' => '১ মে, ২০২৫ ইং'
                 ],
                 [
                     'icon' => 'clock',
@@ -85,7 +87,7 @@ class DatabaseSeeder extends Seeder
                 [
                     'icon' => 'calendar',
                     'title' => 'কোর্স শেষ:',
-                    'detail' => '২৫ এপ্রিল, ২০২৫ ইং'
+                    'detail' => '১ জুলাই, ২০২৫ ইং'
                 ]
             ],
         ];
@@ -300,20 +302,25 @@ class DatabaseSeeder extends Seeder
 
         // 4. Tools
         $tools = [
-            ['name' => 'Python', 'image' => 'images/111.png'],
-            ['name' => 'NumPy', 'image' => 'images/222.png'],
-            ['name' => 'Pandas', 'image' => 'images/333.png'],
-            ['name' => 'Matplotlib', 'image' => 'images/444.png'],
-            ['name' => 'Scikit-Learn', 'image' => 'images/555.png'],
-            ['name' => 'TensorFlow', 'image' => 'images/666.png'],
-            ['name' => 'TensorFlow', 'image' => 'images/777.png'],
-            ['name' => 'TensorFlow', 'image' => 'images/888.png'],
-            ['name' => 'TensorFlow', 'image' => 'images/999.png'],
-            ['name' => 'TensorFlow', 'image' => 'images/keras-logo.png'],
+            ['name' => 'Microsoft Power BI', 'image' => 'images/powerbi.png'],
+            // ['name' => 'Python', 'image' => 'images/111.png'],
+            // ['name' => 'NumPy', 'image' => 'images/222.png'],
+            // ['name' => 'Pandas', 'image' => 'images/333.png'],
+            // ['name' => 'Matplotlib', 'image' => 'images/444.png'],
+            // ['name' => 'Scikit-Learn', 'image' => 'images/555.png'],
+            // ['name' => 'TensorFlow', 'image' => 'images/666.png'],
+            // ['name' => 'TensorFlow', 'image' => 'images/777.png'],
+            // ['name' => 'TensorFlow', 'image' => 'images/888.png'],
+            // ['name' => 'TensorFlow', 'image' => 'images/999.png'],
+            // ['name' => 'TensorFlow', 'image' => 'images/keras-logo.png'],
         ];
         Tool::insert($tools);
 
-
+        // Enroll
+        $enrolls = [
+            ['section_title' => 'এনালাইজিং ডাটা উইথ মাইক্রোসফট পাওয়ার বিআই (২৪ ব্যাচ)', 'title' => '২৪তম ব্যাচ এ Enroll করুন', 'enroll_url' => 'https://forms.gle/YEYxLYr1fdtznTrs9'],
+        ];
+        Enroll::insert($enrolls);
 
         // 7. Course Offerings
         $courseOfferingData = [
@@ -324,37 +331,37 @@ class DatabaseSeeder extends Seeder
                 'description' => 'আপডেটেড কারিকুলাম',
             ],
             [
-                'icon' => 'images/৪ মাসের স্টাডিপ্ল্যান.png',
+                'icon' => 'images/35 টি লাইভ ক্লাস.png',
                 'title' => '৭ টি লাইভ ক্লাস',
                 'description' => 'ইন্ডাস্ট্রি এক্সপার্টদের কাছে শিখুন লাইভে',
             ],
             [
-                'icon' => 'images/৪ মাসের স্টাডিপ্ল্যান.png',
+                'icon' => 'images/project.png',
                 'title' => '৪ টি রিয়েল লাইফ প্রজেক্ট',
                 'description' => 'ইন্ডাস্ট্রি স্ট্যান্ডার্ড প্রজেক্ট এড করুন পিডিএফ, এক্সেল সবার চেয়ে এগিয়ে',
             ],
             [
-                'icon' => 'images/৪ মাসের স্টাডিপ্ল্যান.png',
+                'icon' => 'images/progress.png',
                 'title' => 'প্রোগ্রেস ট্র্যাকিং',
                 'description' => 'নিজের ড্যাশবোর্ড দেখুন এবং অগ্রগতির মূল্যায়ন করুন।',
             ],
             [
-                'icon' => 'images/৪ মাসের স্টাডিপ্ল্যান.png',
+                'icon' => 'images/support.png',
                 'title' => '২৪/৭ সাপোর্ট',
                 'description' => 'প্র্যাক্টিস করতে গিয়ে পাবেন লাইভ সাপোর্ট',
             ],
             [
-                'icon' => 'images/৪ মাসের স্টাডিপ্ল্যান.png',
+                'icon' => 'images/কমিউনিটি সাপোর্ট.png',
                 'title' => 'কমিউনিটি সাপোর্ট',
                 'description' => 'থাকুন কর্পোরেট প্রফেশনাল কমিউনিটির সাথে অলটাইমস',
             ],
             [
-                'icon' => 'images/35 টি লাইভ ক্লাস.png',
+                'icon' => 'images/access.png',
                 'title' => 'লাইফটাইম এক্সেস',
                 'description' => 'রিসোর্স এবং লাইভ ক্লাসের রেকর্ড লাইফটাইম অ্যাক্সেসযোগ্য থাকবে।',
             ],
             [
-                'icon' => 'images/কমিউনিটি সাপোর্ট.png',
+                'icon' => 'images/certificate.jpg',
                 'title' => 'সার্টিফিকেট',
                 'description' => 'কোর্স শেষ করে পাবেন সেয়ারেবল প্রফেশনাল কোর্স কমপ্লিশন সার্টিফিকেট',
             ],
@@ -387,12 +394,39 @@ class DatabaseSeeder extends Seeder
 
         // 9. Instructor
         $instructor = [
-            'name' => 'Md.Mahabub Alam',
-            'qualifications' => 'বিজনেস ডেটা এনালিস্ট, Dependable Solutions Inc., CA, USA',
-            'experience' => json_encode(['Taught over 250+ students', '7 years of industry experience']),
+            'name' => 'Md. Mahabub Alam',
+            'designation' => 'বিজনেস ডেটা এনালিস্ট',
+            'organization' => 'Dependable Solutions Inc., CA, USA',
+            'experience' => json_encode([
+                '14+ years in Business Data Analysis & Visualization',
+                'Currently working as an Operations Analyst at Dependable Solutions Inc., CA, USA',
+                'BI Project Consultant at Logic Software Ltd.',
+                '8+ years of experience in Training & Resource Development',
+            ]),
+            'education' => json_encode([
+                'PGD in IT, Jahangirnagar University',
+                'MBA in Finance, Presidency University',
+                'BBA in Finance, Presidency University',
+            ]),
+            'skills' => json_encode([
+                'Power BI',
+                'Google Studio',
+                'ডেটা বিশ্লেষণ',
+                'ব্যবসায়িক বিশ্লেষণ',
+                'ভিজুয়ালাইজেশন',
+                'ব্যবসায়িক ইন্টেলিজেন্স',
+                'Office 365'
+            ]),
+            'certifications' => json_encode([
+                'Microsoft Certified: Power BI Data Analyst Associate (2023-2025)',
+                'Analytics & BI Engineering, Value Base Academy (2021)',
+                'Management & Leadership Development, icddr,b (2018)',
+                'Applied Statistics using SPSS, ISRT, Dhaka University (2018)',
+            ]),
             'profile_image' => 'images/profile.png',
-            'linkedin' => 'https://bd.linkedin.com/in/shahriarjrafi',
+            'linkedin' => 'https://www.linkedin.com/in/md-mahabub-alam',
         ];
+
         Instructor::create($instructor);
 
         // 10. Requirements
@@ -491,20 +525,10 @@ class DatabaseSeeder extends Seeder
         Testimonial::insert($testimonials);
 
         // 13. Graduates
-        $graduates = [
-            ['image' => 'images/1.jpg'],
-            ['image' => 'images/2.jpg'],
-            ['image' => 'images/3.jpg'],
-            ['image' => 'images/4.jpg'],
-            ['image' => 'images/5.jpg'],
-            ['image' => 'images/5.jpg'],
-            ['image' => 'images/7.jpg'],
-            ['image' => 'images/8.jpg'],
-            ['image' => 'images/9.jpg'],
-            ['image' => 'images/10.jpg'],
-            ['image' => 'images/11.jpg'],
-            ['image' => 'images/12.jpg'],
-        ];
+        $graduates = [];
+        for ($i = 1; $i <= 22; $i++) {
+            $graduates[] = ['image' => "images/{$i}.jpg"];
+        }
         Graduate::insert($graduates);
 
         // 14. Footer Data

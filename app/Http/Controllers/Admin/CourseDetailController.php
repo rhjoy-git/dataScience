@@ -84,20 +84,20 @@ class CourseDetailController extends Controller
     private function getModelNames()
     {
         return [
-            'NavLink',
+            'NavLinks',
+            'Course-Datas',
+            'Course-Summary',
             'Curriculum',
-            'CourseDetail',
-            'Tool',
-            'CourseData',
-            'CourseSummary',
-            'CourseOffering',
-            'EnrollmentPoint',
+            'Course-Details',
+            'Tools',
+            'Course-Offering',
+            'Enrollment-Point',
             'Instructor',
             'Requirement',
-            'Faq',
-            'Testimonial',
-            'Graduate',
-            'FooterData'
+            'Faqs',
+            'Testimonials',
+            'Graduates',
+            'FooterDatas'
         ];
     }
 }

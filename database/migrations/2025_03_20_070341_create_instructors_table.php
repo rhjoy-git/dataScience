@@ -14,12 +14,17 @@ return new class extends Migration
         Schema::create('instructors', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text('qualifications');
+            $table->text('designation');
+            $table->text('organization');
             $table->json('experience'); 
+            $table->json('education'); 
+            $table->json('skills'); 
+            $table->json('certifications'); 
             $table->string('profile_image')->nullable();
             $table->string('linkedin')->nullable();
             $table->timestamps();
         });
+        
     }
 
     /**

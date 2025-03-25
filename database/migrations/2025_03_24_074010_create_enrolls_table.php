@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('enrolls', function (Blueprint $table) {
             $table->id();
-            $table->string('section_title');
+            $table->string('section_title')->nullable();
             $table->string('title');
             $table->string('enroll_url');
             $table->timestamps();

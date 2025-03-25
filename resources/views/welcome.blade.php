@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Data Science</title>
-
+    <title>Analyzing Data with Microsoft Power BI</title>
+    <link rel="icon" type="image/png" href="{{ asset('images/Skill.jobs_.png') }}">
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
@@ -36,7 +36,7 @@
                         <div class="ml-5 flex items-baseline space-x-4">
                             @foreach($navLinks as $link)
                             <a class="text-blue-600 hover:text-blue-800 px-2 py-2 hover:bg-gray-200 duration-300 rounded-md text-sm font-medium"
-                                href="">
+                                href="{{ $link['route'] }}">
                                 {{ $link['text'] }}
                             </a>
                             @endforeach
@@ -298,15 +298,15 @@
         </div>
     </section>
 
-
     <!-- Tools Section DONE -->
     <section class="py-16">
         <div class="container mx-auto px-4">
             <h2 class="text-4xl font-bold text-center mb-12">টুলস এবং লাইব্রেরি</h2>
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                 @foreach($tools as $tool)
-                <div class="bg-gray-100 p-4 rounded-lg shadow hover:shadow-lg transition-shadow md:w-[13rem]">
-                    <div class="flex flex-col items-center">
+                <div
+                    class="col-start-2 bg-gray-100 p-4 rounded-lg shadow hover:shadow-lg transition-shadow md:w-[13rem]">
+                    <div class="flex flex-col items-center ">
                         <img src="{{ $tool['image'] }}" alt="{{ $tool['name'] }}" class="w-16 h-16 mb-4 object-contain">
                         <h3 class="font-semibold">{{ $tool['name'] }}</h3>
                     </div>
@@ -365,9 +365,10 @@
     <!--  Enroll now -->
     <div
         class="sticky w-full bottom-0 left-0 right-0 bg-gray-900 px-4 py-6 flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-8">
-        <h3 class="text-white text-xl font-semibold">এনালাইজিং ডাটা উইথ মাইক্রোসফট পাওয়ার বি (২৪ ব্যাচ)</h3>
+        @foreach ($enrolls as $enroll)
+        <h3 class="text-white text-xl font-semibold">{{ $enroll->section_title }}</h3>
         <a class="flex items-center justify-center gap-3 w-full sm:w-auto min-w-[150px] py-4 px-4 rounded bg-red-600 hover:bg-red-700 duration-300 text-white font-bold"
-            target="_blank" href="https://forms.gle/YEYxLYr1fdtznTrs9">
+            target="_blank" href="{{$enroll->enroll_url}}">
             <svg width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g clip-path="url(#a)" stroke="#fff" stroke-linecap="round" stroke-linejoin="round">
                     <path
@@ -383,32 +384,71 @@
                     </clipPath>
                 </defs>
             </svg>
-            ২৪তম ব্যাচ এ Enroll করুন
+            {{$enroll->title}}
         </a>
+        @endforeach
+
     </div>
 
     <!-- Instructor Section -->
     <section class="py-16 w-full">
-        <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-4xl font-bold text-center mb-8">ইন্সট্রাক্টর</h2>
             <a href="{{ $instructor->linkedin }}" target="_blank" class="block group">
                 <div
-                    class="bg-white rounded-lg shadow-lg p-6 flex flex-col md:flex-row items-center gap-6 transition-transform hover:-translate-y-1">
+                    class="bg-white rounded-lg shadow-lg p-6 flex flex-col md:flex-row items-start gap-6 transition-transform hover:-translate-y-1">
                     <div class="flex-1 space-y-4">
                         <span
                             class="inline-block border border-purple-300 rounded-full px-4 py-1 text-purple-500 text-sm font-medium">
                             LEAD INSTRUCTOR
                         </span>
                         <h3 class="text-2xl font-bold">{{ $instructor->name }}</h3>
-                        <p class="text-gray-600">{{ $instructor->qualifications }}</p>
+                        <p class="text-gray-600 font-semibold">{{ $instructor->designation }}</p>
+                        <p class="text-gray-500">{{ $instructor->organization }}</p>
+
+                        <!-- Experience -->
                         <div class="space-y-2">
+                            <h4 class="text-lg font-semibold">অভিজ্ঞতা</h4>
                             @foreach(json_decode($instructor->experience, true) as $exp)
                             <div class="flex items-center gap-2 text-gray-700">
                                 <span>✓ {{ $exp }}</span>
                             </div>
                             @endforeach
                         </div>
+
+                        <!-- Education -->
+                        <div class="space-y-2">
+                            <h4 class="text-lg font-semibold">শিক্ষাগত যোগ্যতা</h4>
+                            @foreach(json_decode($instructor->education, true) as $edu)
+                            <div class="flex items-center gap-2 text-gray-700">
+                                <span>🎓 {{ $edu }}</span>
+                            </div>
+                            @endforeach
+                        </div>
+
+                        <!-- Skills -->
+                        <div class="space-y-2">
+                            <h4 class="text-lg font-semibold">দক্ষতা</h4>
+                            <div class="flex flex-wrap gap-2">
+                                @foreach(json_decode($instructor->skills, true) as $skill)
+                                <span class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm font-medium">
+                                    {{ $skill }}
+                                </span>
+                                @endforeach
+                            </div>
+                        </div>
+
+                        <!-- Certifications -->
+                        <div class="space-y-2">
+                            <h4 class="text-lg font-semibold">সার্টিফিকেশন</h4>
+                            @foreach(json_decode($instructor->certifications, true) as $cert)
+                            <div class="flex items-center gap-2 text-gray-700">
+                                <span>📜 {{ $cert }}</span>
+                            </div>
+                            @endforeach
+                        </div>
                     </div>
+
                     <div class="w-48 h-48 rounded-lg overflow-hidden">
                         <img src="{{ asset($instructor->profile_image) }}" alt="Instructor"
                             class="w-full h-full object-cover">
@@ -417,6 +457,7 @@
             </a>
         </div>
     </section>
+
 
 
     <!-- Requirements Section DONE -->
@@ -540,10 +581,9 @@
             <!-- Graduates Grid -->
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 @foreach($graduates as $graduate)
-                <div class="relative overflow-hidden rounded-lg shadow-lg cursor-pointer">
-                    <img alt="Graduate" loading="lazy" width="400" height="300" class="w-full h-auto object-cover"
-                        src="{{ asset($graduate->image) }}" />
-                </div>
+                <div class="relative overflow-hidden rounded-lg shadow-lg cursor-pointer w-full h-60">
+                    <img alt="Graduate" loading="lazy" class="w-full h-full object-cover" src="{{ asset($graduate->image) }}" />
+                </div>                
                 @endforeach
             </div>
         </div>
@@ -635,7 +675,7 @@
                 </div>
             </div>
         </footer>
-    </div> --}}
+    </div>
 
 
     <!-- Add Alpine.js -->

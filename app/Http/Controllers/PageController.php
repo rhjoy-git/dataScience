@@ -10,6 +10,7 @@ use App\Models\{
     CourseData,
     CourseSummary,
     CourseOffering,
+    Enroll,
     EnrollmentPoint,
     Instructor,
     Requirement,
@@ -29,6 +30,7 @@ class PageController extends Controller
         return view('welcome', [
             'navLinks' => NavLink::all(),
             'curriculums' => Curriculum::all(),
+            'enrolls' => Enroll::all() ,
             'courseDetails' => CourseDetail::all(),
             'tools' => Tool::all(),
             'courseData' => CourseData::first(),
